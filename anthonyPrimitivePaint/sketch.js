@@ -10,9 +10,18 @@
 function setup() {
   createCanvas(windowWidth, windowHeight);
   background(255);
+  fill("red");
+}
+function draw() {
+//background(255);
 }
 
-keyTyped();
+function keyPressed() {
+  if (key === "c") {
+    fill(random(255), random(255), random(255));
+  }
+}
+
 
 function keyTyped() {
   if (key === "a") {
