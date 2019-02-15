@@ -14,26 +14,23 @@ function setup() {
 }
 function draw() {
 //background(255);
+  textSize(40);
+  textFont("Comic Sans MS");
+  textStyle(BOLD);
+  text("Anthony Pittman", 50, 50);
 }
-
-function keyPressed() {
-  if (key === "c") {
-    fill(random(255), random(255), random(255));
-  }
-}
-
 
 function keyTyped() {
   if (key === "a") {
-    fill("red");
+    fill(random(255), random(255), random(255));
     rect(mouseX, mouseY, 250, 100);
   }
   else if (key === "s") {
-    fill("magenta");
+    fill(random(255), random(255), random(255));
     ellipse(mouseX, mouseY, 200, 200);
   }
   else if (key === "d") {
-    fill("green");
+    fill(random(255), random(255), random(255));
     triangle(mouseX+100, mouseY-100, mouseX-100, mouseY+100, mouseX-100, mouseY-100);
   }
   
