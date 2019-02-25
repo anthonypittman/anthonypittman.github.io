@@ -15,7 +15,7 @@ function setup() {
   y = height/2;
   xSpeed = 25;
   ySpeed = 25;
-  background(0);
+  background(255);
   noStroke();
 }
 
