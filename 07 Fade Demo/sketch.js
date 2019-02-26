@@ -35,7 +35,6 @@ function mouseDistance(x1, y1, x2, y2) {
 function mousePressed() {
   if (buttonOver) {
     fadeIn = !fadeIn;
-
   }
 }
 function draw() {
@@ -51,13 +50,12 @@ function draw() {
     fill(160, 30, 30);
     buttonOver = false;
   }
-
   ellipse(buttonX, buttonY, buttonSize, buttonSize);
   
   // draw the rectangle
   //if (frameCount % 2 === 0) {
-  
   //}
+  
   if(fadeIn) {
     rectShade -= 2;
   }
