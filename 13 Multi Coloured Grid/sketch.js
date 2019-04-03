@@ -1,6 +1,6 @@
-// Project Title
-// Your Name
-// Date
+// Multi Coloured grid
+// Anthony Pittman
+// April 2nd 2019
 //
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
@@ -15,6 +15,7 @@ function setup() {
 function draw() {
 
 }
+//Creates the Grid
 function createGrid() {
   for (let y = 0; y < height; y += squareSize) {
     for (let x = 0; x < width; x+= squareSize) {
@@ -23,15 +24,22 @@ function createGrid() {
     }
   }
 }
-
+//Changes Size
 function mousePressed() {
-  squareSize += 5;
-  createGrid();
+  if (mouseButton === LEFT) {
+    squareSize += 5;
+    createGrid();
+  }
+  else{
+    squareSize -= 5;
+    createGrid();
+  }
 }
-
+//Refreshes 
 function keyPressed() {
   if (key === "q") {
-    squareSize += 5;
+    fill(random(255), random(2550), random(255));
+    createGrid();
   }
 
 }

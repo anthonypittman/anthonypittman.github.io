@@ -26,10 +26,10 @@ function draw() {
   image(Idle[counter], width/2, height/2, 150, 150);
   image(player, width/2, height/4);
 
-  if (frameCount % int(speed) === 0) {
-    counter ++;
-    if (counter > 3) {
-      counter = 0;
-    }
-  }
+ //if (frameCount % int(speed) === 0) {
+    //counter ++;
+    //if (counter > 3) {
+      //counter = 0;
+    //}
+  //}
 }
