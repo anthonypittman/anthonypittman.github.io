@@ -7,9 +7,17 @@
 
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(4500, 3000);
+  background(220);
 }
 
 function draw() {
-  background(220);
+  fill(255);
+  ellipse(width/2, height/2, 400, 400);
+}
+
+function keyPressed() {
+  if (key === " ") {
+    save();
+  }
 }
