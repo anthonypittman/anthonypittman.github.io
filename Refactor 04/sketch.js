@@ -13,7 +13,6 @@ function setup() {
 
 function draw() {
   chessBoard();
-  
 }
 
 function chessBoard() {
@@ -31,7 +30,7 @@ function chessBoard() {
         fillColour = 0;
       }
     }
-    // flips colours to have chess board effect
+    // flips colours to give chess board effect
     if (fillColour === 0) {
       fillColour = 255;
     }

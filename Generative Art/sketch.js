@@ -11,8 +11,8 @@ let y = 0;
 function setup() {
   createCanvas(windowWidth, windowHeight);
   stroke(random(255), random(255), random(255));
-  strokeWeight(0.1);
-  background(0);
+  strokeWeight(0.5);
+  background(255);
 }
 
 function draw() {
@@ -21,13 +21,19 @@ function draw() {
 }
 
 function drawHorizontal() {
-  let newX = random(0, height);
-  for (let i = 0; i < width/2; i += 200) {
-    for (let j = 0; j < height/2; j += 200) {
-      line(i, j, newX, height);
+  let newX = random(width, height);
+  let newY = random(width, height);
+  for (let i = random(0, 200); i < width; i += 100) {
+    for (let j = random(0, 200); j < height; j += 100) {
+      line(i, j, newX, newY);
     }
   }
+}
 
+function keyPressed() {
+  if (key === " ") {
+    save();
+  }
 }
 
 // function drawVertical() {
