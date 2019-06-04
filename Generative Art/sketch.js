@@ -12,7 +12,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   stroke(random(255), random(255), random(255));
   strokeWeight(0.5);
-  background(255);
+  background(0);
 }
 
 function draw() {
