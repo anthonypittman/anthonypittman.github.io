@@ -7,23 +7,13 @@
 
 let link;
 let bg;
-
 function preload() {
-
-  //idle = loadAnimation("idle", "assets/idle.png");
-  // link.addAnimation("walk", "assets/walk01.png", "assets/walk04.png");
-  // link.addAnimation("walkLeft", "assets/walkLeft01.png", "assets/walkLeft02.png");
-  // link.addAnimation("walkRight", "assets/walkRight01.png", "assets/walkRight02.png");
-  // link.addAnimation("walkUp", "assets/walkUp01.png", "assets/walkUp04.png");
-  //death = loadAnimation("death", "assets/death.png");
-  //jab = loadAnimation("jab", "assets/jab.png");
-  //jabLeft = loadAnimation("jabLeft", "assets/jabLeft.png");
-  //jabRight = loadAnimation("jabRight", "assets/jabRight.png");
-  //jabUp = loadAnimation("jabUp", "assets/jabUp.png");
 }
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  bg = loadImage("assets/BG.png");
+  //imageMode(CENTER);
+  //bg = loadImage("assets/level 1.png");
   link = createSprite(400, 400);
   link.addAnimation("idle", "assets/idlee01.png");
   link.addAnimation("walk", "assets/walk01.png", "assets/walk04.png");
@@ -39,7 +29,7 @@ function setup() {
 
 function draw() {
   background(220);
-  image(bg, 600, 600);
+  //image(bg, width/2, height/2, width, height);
   drawSprites();
   move();
 }
