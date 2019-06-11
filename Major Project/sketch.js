@@ -7,6 +7,9 @@
 
 let link;
 let bg;
+let tree;
+let treeTimer = 60;
+let treeMoving = false;
 function preload() {
 }
 
@@ -15,6 +18,7 @@ function setup() {
   //imageMode(CENTER);
   //bg = loadImage("assets/level 1.png");
   link = createSprite(400, 400);
+  tree = createSprite(400, 600);
   link.addAnimation("idle", "assets/idlee01.png");
   link.addAnimation("walk", "assets/walk01.png", "assets/walk04.png");
   link.addAnimation("walkLeft", "assets/walkLeft01.png", "assets/walkLeft02.png");
@@ -25,6 +29,11 @@ function setup() {
   link.addAnimation("jabLeft", "assets/jabLeft.png");
   link.addAnimation("jabRight", "assets/jabRight.png");
   link.addAnimation("jabUp", "assets/jabUp.png");
+  tree.addAnimation("idle", "assets/treeIdle01.png");
+  tree.addAnimation("walk", "assets/treeWalk01.png", "assets/treeWalk03.png");
+  tree.addAnimation("walkUp", "assets/treeWalkUp01.png", "assets/treeWalkUp03.png");
+  tree.addAnimation("walkLeft", "assets/treeWalkleft01.png", "assets/treeWalkLeft03.png");
+  tree.addAnimation("walkRight", "assets/treeWalkRight01.png", "assets/treeWalkRight03.png");
 }
 
 function draw() {
@@ -32,6 +41,27 @@ function draw() {
   //image(bg, width/2, height/2, width, height);
   drawSprites();
   move();
+  treeMove();
+}
+
+function treeMove() {
+  if (treeMoving === false) {
+    treeTimer --;
+  }
+  if (treeTimer === 0) {
+    treeMoving = true;
+    treeTimer = 60;
+    tree.changeAnimation("walkRight");
+  }
+  if (treeMoving === true) {
+    treeTimer --;
+    tree.position.x += 2.5;
+    if (treeTimer === 0) {
+      treeMoving = false;
+      treeTimer = 120;
+      tree.changeAnimation("idle");
+    }
+  }
 }
 
 function move() {
