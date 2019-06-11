@@ -9,11 +9,13 @@ let link;
 let tree;
 let treeTimer = 60;
 let treeMoving = false;
+let bg;
 function preload() {
 }
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  bg = loadImage("assets/level02.png");
   link = createSprite(400, 400);
   tree = createSprite(400, 600);
   link.addAnimation("idle", "assets/idlee01.png");
@@ -35,6 +37,7 @@ function setup() {
 
 function draw() {
   background(220);
+  image(bg, 0, 0);
   drawSprites();
   move();
   treeMove();
