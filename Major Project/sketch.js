@@ -6,7 +6,6 @@
 // - describe what you did to take this project "above and beyond"
 
 let link;
-let bg;
 let tree;
 let treeTimer = 60;
 let treeMoving = false;
@@ -15,8 +14,6 @@ function preload() {
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  //imageMode(CENTER);
-  //bg = loadImage("assets/level 1.png");
   link = createSprite(400, 400);
   tree = createSprite(400, 600);
   link.addAnimation("idle", "assets/idlee01.png");
@@ -38,13 +35,13 @@ function setup() {
 
 function draw() {
   background(220);
-  //image(bg, width/2, height/2, width, height);
   drawSprites();
   move();
   treeMove();
 }
 
 function treeMove() {
+  tree.collide(link);
   if (treeMoving === false) {
     treeTimer --;
   }
