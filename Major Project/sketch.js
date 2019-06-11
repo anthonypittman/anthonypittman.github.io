@@ -6,25 +6,25 @@
 // - describe what you did to take this project "above and beyond"
 
 let link;
+<<<<<<< HEAD
+let tree;
+let treeTimer = 60;
+let treeMoving = false;
+=======
 let bg;
-
+>>>>>>> a2df1d3d58120eadeb3237ea85a17787af9f2747
 function preload() {
-
-  //idle = loadAnimation("idle", "assets/idle.png");
-  // link.addAnimation("walk", "assets/walk01.png", "assets/walk04.png");
-  // link.addAnimation("walkLeft", "assets/walkLeft01.png", "assets/walkLeft02.png");
-  // link.addAnimation("walkRight", "assets/walkRight01.png", "assets/walkRight02.png");
-  // link.addAnimation("walkUp", "assets/walkUp01.png", "assets/walkUp04.png");
-  //death = loadAnimation("death", "assets/death.png");
-  //jab = loadAnimation("jab", "assets/jab.png");
-  //jabLeft = loadAnimation("jabLeft", "assets/jabLeft.png");
-  //jabRight = loadAnimation("jabRight", "assets/jabRight.png");
-  //jabUp = loadAnimation("jabUp", "assets/jabUp.png");
 }
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  bg = loadImage("assets/BG.png");
+<<<<<<< HEAD
+=======
+  //imageMode(CENTER);
+  //bg = loadImage("assets/level 1.png");
+>>>>>>> a2df1d3d58120eadeb3237ea85a17787af9f2747
   link = createSprite(400, 400);
+  tree = createSprite(400, 600);
   link.addAnimation("idle", "assets/idlee01.png");
   link.addAnimation("walk", "assets/walk01.png", "assets/walk04.png");
   link.addAnimation("walkLeft", "assets/walkLeft01.png", "assets/walkLeft02.png");
@@ -35,13 +35,46 @@ function setup() {
   link.addAnimation("jabLeft", "assets/jabLeft.png");
   link.addAnimation("jabRight", "assets/jabRight.png");
   link.addAnimation("jabUp", "assets/jabUp.png");
+  tree.addAnimation("idle", "assets/treeIdle01.png");
+  tree.addAnimation("walk", "assets/treeWalk01.png", "assets/treeWalk03.png");
+  tree.addAnimation("walkUp", "assets/treeWalkUp01.png", "assets/treeWalkUp03.png");
+  tree.addAnimation("walkLeft", "assets/treeWalkleft01.png", "assets/treeWalkLeft03.png");
+  tree.addAnimation("walkRight", "assets/treeWalkRight01.png", "assets/treeWalkRight03.png");
 }
 
 function draw() {
   background(220);
-  image(bg, 600, 600);
+<<<<<<< HEAD
+=======
+  //image(bg, width/2, height/2, width, height);
+>>>>>>> a2df1d3d58120eadeb3237ea85a17787af9f2747
   drawSprites();
   move();
+  treeMove();
+}
+
+function playerHealth() {
+  //
+}
+
+function treeMove() {
+  if (treeMoving === false) {
+    treeTimer --;
+  }
+  if (treeTimer === 0) {
+    treeMoving = true;
+    treeTimer = 60;
+    tree.changeAnimation("walkRight");
+  }
+  if (treeMoving === true) {
+    treeTimer --;
+    tree.position.x += 2.5;
+    if (treeTimer === 0) {
+      treeMoving = false;
+      treeTimer = 120;
+      tree.changeAnimation("idle");
+    }
+  }
 }
 
 function move() {
@@ -78,3 +111,4 @@ function move() {
     link.changeAnimation("idle");
   }
 }
+
