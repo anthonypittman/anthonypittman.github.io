@@ -11,6 +11,9 @@ let treeTimer = 60;
 let treeMoving = false;
 let bg;
 let sword;
+let choice;
+let health = 3;
+let linkHealth = 3;
 function preload() {
 }
 
@@ -51,32 +54,59 @@ function draw() {
 }
 
 function treeMove() {
-  tree.collide(link);
+  if (tree.collide(link)) {
+    linkHealth -= 1;
+  }
   if (treeMoving === false) {
     treeTimer --;
   }
   if (treeTimer === 0) {
     treeMoving = true;
     treeTimer = 60;
-    tree.changeAnimation("walkRight");
+    choice = int(random(4));
+    if (choice === 0) {
+      tree.changeAnimation("walkRight");
+    }
+    if (choice === 1) {
+      tree.changeAnimation("walkLeft");
+    }
+    if (choice === 2) {
+      tree.changeAnimation("walkUp");
+    }
+    if (choice === 3) {
+      tree.changeAnimation("walk");
+    }
   }
   if (treeMoving === true) {
     treeTimer --;
-    tree.position.x += 2.5;
+    if (choice === 0) {
+      tree.position.x += 2.5;
+    }
+    if (choice === 1) {
+      tree.position.x -= 2.5;
+    }
+    if (choice === 2) {
+      tree.position.y -= 2.5;
+    }
+    if (choice === 3) {
+      tree.position.y += 2.5;
+    }
+    
     if (treeTimer === 0) {
       treeMoving = false;
       treeTimer = 120;
       tree.changeAnimation("idle");
     }
   }
+  if (health === 0) {
+    tree.remove();
+  }
 }
 
 function move() {
   if (keyDown("s")) {
     link.changeAnimation("walk");
-    sword.changeAnimation("sword");
     link.position.y += 5;
-    sword.position.y = link.position.y + 50;
   }
   else if (keyDown("a")) {
     link.changeAnimation("walkLeft");
@@ -95,27 +125,52 @@ function move() {
     sword.changeAnimation("sword");
     sword.position.y = link.position.y + 63;
     sword.position.x = link.position.x + 19;
+    if (sword.collide(tree)){
+      //decrease tree health
+      //displace the tree
+      health -= 1;
+      tree.position.y += 40;
+    }
   }
   else if (keyDown("left_arrow")) {
     link.changeAnimation("jabLeft");
     sword.changeAnimation("swordLeft");
     sword.position.y = link.position.y + 16;
     sword.position.x = link.position.x - 66;
+    if (sword.collide(tree)) {
+      health -= 1;
+      tree.position.x -= 40;
+    }
   }
   else if (keyDown("right_arrow")) {
     link.changeAnimation("jabRight");
     sword.changeAnimation("swordRight");
     sword.position.y = link.position.y + 16.5;
     sword.position.x = link.position.x + 65;
+    if (sword.collide(tree)) {
+      health -= 1;
+      tree.position.x += 40;
+    }
   }
   else if (keyDown("up_arrow")) {
     link.changeAnimation("jabUp");
     sword.changeAnimation("swordUp");
     sword.position.y = link.position.y - 65;
     sword.position.x = link.position.x - 24;
+    if (sword.collide(tree)) {
+      health -= 1;
+      tree.position.y -= 40;
+    }
+  }
+  else if (linkHealth === 0) {
+    link.changeAnimation("death");
   }
 
   else {
     link.changeAnimation("idle");
+    sword.changeAnimation("swordHide");
+  }
+  if (linkHealth < 1) {
+    link.changeAnimation("death");
   }
 }
