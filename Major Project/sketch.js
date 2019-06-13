@@ -14,6 +14,8 @@ let sword;
 let choice;
 let health = 3;
 let linkHealth = 3;
+let deathTimer = 0;
+let protect = false;
 function preload() {
 }
 
@@ -55,7 +57,11 @@ function draw() {
 
 function treeMove() {
   if (tree.collide(link)) {
-    linkHealth -= 1;
+    if (protect === false) {
+      linkHealth -= 1;
+      protect = true;
+      deathTimer = 60;
+    }
   }
   if (treeMoving === false) {
     treeTimer --;
@@ -172,5 +178,11 @@ function move() {
   }
   if (linkHealth < 1) {
     link.changeAnimation("death");
+  }
+  if (protect === true) {
+    deathTimer --;
+    if (deathTimer < 1) {
+      protect = false;
+    }
   }
 }
